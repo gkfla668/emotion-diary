@@ -15,9 +15,15 @@ const filterOptionList = [
 
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select value={value} onChange={(e) => onChange(e.target.value)}>
-      {optionList.map((it) => (
-        <option value={it.value}>{it.name}</option>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
+      {optionList.map((it, idx) => (
+        <option ket={idx} value={it.value}>
+          {it.name}
+        </option>
       ))}
     </select>
   );
@@ -73,7 +79,7 @@ const DiaryList = ({ diaryList }) => {
         </div>
         <div className="right_col">
           <MyButton
-            text={"일기 작성하기"}
+            text={"새 일기쓰기"}
             type={"positive"}
             onClick={() => {
               navigate("/new");

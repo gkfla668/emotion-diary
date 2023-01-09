@@ -23,7 +23,7 @@ body {
 
 @media (min-width: 650px) {
   .App {
-    width: 720px;
+    width: 640px;
   }
 }
 
@@ -39,11 +39,33 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  box-shadow: 3px 3px 3px #8b8b8b;
   padding: 10px 20px 10px 20px;
-  font-size: 12px;
+  font-size: 16px;
 
   white-space: nowrap;
   font-family: "Nanum pen Script";
+
+  transition-duration: 0.2s;
+}
+
+.MyButton:active {
+  box-shadow: none;
+}
+
+.MyButton_positive {
+  color: white;
+  background-color: #64c964;
+}
+
+.MyButton_negative {
+  color: white;
+  background-color: #fd565f;
+}
+
+.MyButton_default {
+  color: black;
+  background-color: #ececec;
 }
 
 /* MyHeader */
@@ -75,4 +97,42 @@ header .head_btn_right {
 
 header button {
   font-family: "Nanum Pen Script";
+}
+
+/* DiaryList */
+
+.DiaryList .menu_wrapper {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu_wrapper .right_col {
+  flex-grow: 1;
+}
+
+.menu_wrapper .right_col button {
+  width: 100%;
+}
+
+.DiaryList .ControlMenu {
+  margin-right: 10px;
+  padding: 9px 20px 9px 20px;
+
+  font-family: "Nanum Pen Script";
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+
+  box-shadow: 3px 3px 3px #8b8b8b;
+
+  cursor: pointer;
+}
+
+.DiaryList .ControlMenu:active{
+  box-shadow: none;
 }
