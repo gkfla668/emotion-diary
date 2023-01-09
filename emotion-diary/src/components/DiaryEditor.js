@@ -74,6 +74,7 @@ const DiaryEditor = () => {
                 key={it.emotion_id}
                 {...it}
                 onClick={handleClickEmotion}
+                isSelected={it.emotion_id === emotion}
               ></EmotionItem>
             ))}
           </div>
