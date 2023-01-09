@@ -1,9 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
 
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
+
+import { DiaryDispatchContext } from "./../App";
 
 const emotionList = [
   {
@@ -34,10 +36,23 @@ const emotionList = [
 ];
 
 const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+
+  if (month < 10) {
+    month = `0${month}`;
+  }
+
+  if (day < 10) {
+    day = `0${day}`;
+  }
+
+  return `${year}-${month}-${day}`;
 };
 
 const DiaryEditor = () => {
+  const { onCreate } = useContext(DiaryDispatchContext);
   const navigate = useNavigate();
   const [date, setDate] = useState(getStringDate(new Date()));
   const [emotion, setEmotion] = useState(3);
@@ -49,6 +64,15 @@ const DiaryEditor = () => {
     setEmotion(emotion);
   };
 
+  const handleSubmit = () => {
+    if (content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
+
+    onCreate(date, content, emotion);
+    navigate("/", { replace: true });
+  };
   return (
     <div className="DiaryEditor">
       <MyHeader
@@ -91,6 +115,21 @@ const DiaryEditor = () => {
               placeholder="오늘은 어땠나요?"
               onChange={(e) => setContent(e.target.value)}
             ></textarea>
+          </div>
+        </section>
+        <section>
+          <div className="control_box">
+            <MyButton
+              text={"취소하기"}
+              onClick={() => {
+                navigate(-1);
+              }}
+            ></MyButton>
+            <MyButton
+              text={"작성완료"}
+              type={"positive"}
+              onClick={handleSubmit}
+            ></MyButton>
           </div>
         </section>
       </div>

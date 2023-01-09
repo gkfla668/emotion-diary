@@ -22,7 +22,10 @@ const reducer = (state, action) => {
       return action.data;
     }
     case "CREATE": {
-      newState = [action.data, ...state];
+      const newItem = {
+        ...action.data,
+      };
+      newState = [newItem, ...state];
       break;
     }
     case "REMOVE": {
@@ -31,7 +34,7 @@ const reducer = (state, action) => {
     }
     case "EDIT": {
       newState = state.map((it) =>
-        it.id === action.targetId ? { ...action.data } : it
+        it.id === action.data.id ? [...action.data] : it
       );
       break;
     }
@@ -41,34 +44,14 @@ const reducer = (state, action) => {
   return newState;
 };
 
-const dummyData = [
-  {
-    id: 1,
-    content: "형준아",
-    emotion: 1,
-    date: 1673252011998,
-  },
-  {
-    id: 2,
-    content: "안녕",
-    emotion: 5,
-    date: 1673252012001,
-  },
-  {
-    id: 3,
-    content: "하림이야",
-    emotion: 4,
-    date: 1673252012005,
-  },
-];
-
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData);
+  const [data, dispatch] = useReducer(reducer, []);
   const dataId = useRef(0);
 
   const onCreate = (date, content, emotion) => {
+    console.log("작성");
     dispatch({
-      type: "CREAT",
+      type: "CREATE",
       data: {
         id: dataId.current,
         date: new Date(date).getTime(),
