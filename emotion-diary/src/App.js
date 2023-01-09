@@ -34,7 +34,7 @@ const reducer = (state, action) => {
     }
     case "EDIT": {
       newState = state.map((it) =>
-        it.id === action.data.id ? [...action.data] : it
+        it.id === action.data.id ? { ...action.data } : it
       );
       break;
     }
@@ -49,7 +49,6 @@ function App() {
   const dataId = useRef(0);
 
   const onCreate = (date, content, emotion) => {
-    console.log("작성");
     dispatch({
       type: "CREATE",
       data: {
