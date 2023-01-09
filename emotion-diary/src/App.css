@@ -1,0 +1,32 @@
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh; /* 웹 스크린의 실제 현재 크기의 100%를 최소 높이로 갖겠다 */
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgb(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+@media (min-width: 650px) {
+  .App {
+    width: 720px;
+  }
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+}
