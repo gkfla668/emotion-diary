@@ -1,4 +1,4 @@
-import { useReducer, useRef } from "react";
+import React, { useReducer, useRef } from "react";
 
 import "./App.css";
 import MyButton from "./components/MyButton";
@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
 const reducer = (state, action) => {
   let newState = [];
@@ -71,13 +74,17 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <MyHeader
-        leftChild={<MyButton text={"왼쪽"}></MyButton>}
-        head_text={"일기장"}
-        rightChild={<MyButton text={"오른쪽"}></MyButton>}
-      ></MyHeader>
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
+        <div className="App">
+          <MyHeader
+            leftChild={<MyButton text={"왼쪽"}></MyButton>}
+            head_text={"일기장"}
+            rightChild={<MyButton text={"오른쪽"}></MyButton>}
+          ></MyHeader>
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
 
