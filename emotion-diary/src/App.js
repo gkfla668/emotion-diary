@@ -77,11 +77,7 @@ function App() {
     <DiaryStateContext.Provider value={data}>
       <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
         <div className="App">
-          <MyHeader
-            leftChild={<MyButton text={"왼쪽"}></MyButton>}
-            head_text={"일기장"}
-            rightChild={<MyButton text={"오른쪽"}></MyButton>}
-          ></MyHeader>
+          <Home></Home>
         </div>
       </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
