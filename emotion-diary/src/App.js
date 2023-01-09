@@ -44,19 +44,19 @@ const reducer = (state, action) => {
 const dummyData = [
   {
     id: 1,
-    content: "hi 1",
+    content: "형준아",
     emotion: 1,
     date: 1673252011998,
   },
   {
     id: 2,
-    content: "hi 2",
+    content: "안녕",
     emotion: 5,
     date: 1673252012001,
   },
   {
     id: 3,
-    content: "hi 3",
+    content: "하림이야",
     emotion: 4,
     date: 1673252012005,
   },
@@ -104,8 +104,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/new" element={<New></New>}></Route>
-              <Route path="/edit" element={<Edit></Edit>}></Route>
-              <Route path="/diary" element={<Diary></Diary>}></Route>
+              <Route path="/edit/:id" element={<Edit></Edit>}></Route>
+              <Route path="/diary/:id" element={<Diary></Diary>}></Route>
             </Routes>
           </div>
         </BrowserRouter>
