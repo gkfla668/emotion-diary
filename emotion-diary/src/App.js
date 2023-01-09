@@ -39,8 +39,29 @@ const reducer = (state, action) => {
   return newState;
 };
 
+const dummyData = [
+  {
+    id: 1,
+    content: "hi 1",
+    emotion: 1,
+    date: 1673252011998,
+  },
+  {
+    id: 2,
+    content: "hi 2",
+    emotion: 5,
+    date: 1673252012001,
+  },
+  {
+    id: 3,
+    content: "hi 3",
+    emotion: 4,
+    date: 1673252012005,
+  },
+];
+
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatch] = useReducer(reducer, dummyData);
   const dataId = useRef(0);
 
   const onCreate = (date, content, emotion) => {
