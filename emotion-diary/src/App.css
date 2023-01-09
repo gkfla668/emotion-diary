@@ -39,3 +39,29 @@ body {
   padding: 10px 20px 10px 20px;
   font-size: 12px;
 }
+
+/* MyHeader */
+
+header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+  justify-content: center;
+}
+
+header .head_text {
+  width: 50%;
+}
+
+header .head_btn_left {
+  width: 25%;
+}
+
+header .head_btn_right {
+  width: 25%;
+}
