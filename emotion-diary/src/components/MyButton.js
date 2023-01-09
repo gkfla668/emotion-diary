@@ -1,6 +1,11 @@
 const MyButton = ({ text, type, onClick }) => {
+  const btnType = ["positive", "negative"].inculdes(type) ? type : "default";
+
   return (
-    <button className="MyButton" onClick={onClick}>
+    <button
+      className={["MyButton", `MyButton_${btnType}`].join(" ")}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
