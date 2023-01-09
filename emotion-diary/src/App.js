@@ -9,6 +9,8 @@ import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
@@ -97,9 +99,16 @@ function App() {
   return (
     <DiaryStateContext.Provider value={data}>
       <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
-        <div className="App">
-          <Home></Home>
-        </div>
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home></Home>}></Route>
+              <Route path="/new" element={<New></New>}></Route>
+              <Route path="/edit" element={<Edit></Edit>}></Route>
+              <Route path="/diary" element={<Diary></Diary>}></Route>
+            </Routes>
+          </div>
+        </BrowserRouter>
       </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
   );

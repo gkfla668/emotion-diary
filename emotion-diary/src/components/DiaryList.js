@@ -1,4 +1,6 @@
 import { useState } from "react";
+import MyButton from "./MyButton";
+import { useNavigate } from "react-router-dom";
 
 const sortOptionList = [
   { value: "latest", name: "최신순" },
@@ -22,6 +24,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const DiaryList = ({ diaryList }) => {
+  const navigate = useNavigate();
   const [sortType, setSortType] = useState("latest");
   const [filter, setFilter] = useState("all");
 
@@ -55,16 +58,30 @@ const DiaryList = ({ diaryList }) => {
 
   return (
     <div className="DiaryList">
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType}
-        optionList={sortOptionList}
-      ></ControlMenu>
-      <ControlMenu
-        value={filter}
-        onChange={setFilter}
-        optionList={filterOptionList}
-      ></ControlMenu>
+      <div className="menu_wrapper">
+        <div className="left_col">
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          ></ControlMenu>
+          <ControlMenu
+            value={filter}
+            onChange={setFilter}
+            optionList={filterOptionList}
+          ></ControlMenu>
+        </div>
+        <div className="right_col">
+          <MyButton
+            text={"일기 작성하기"}
+            type={"positive"}
+            onClick={() => {
+              navigate("/new");
+            }}
+          ></MyButton>
+        </div>
+      </div>
+
       {getProcessedDiaryList().map((it) => (
         <div ket={it.id}>{it.content}</div>
       ))}
