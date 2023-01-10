@@ -1,19 +1,28 @@
-import MyHeader from "../components/MyHeader";
-import MyButton from "../components/MyButton";
-
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
-import { DiaryStateContext } from "../App";
+
+import MyHeader from "../components/MyHeader";
+import MyButton from "../components/MyButton";
+import EmotionItem from "../components/EmotionItem";
+
+import { DiaryDispatchContext, DiaryStateContext } from "../App";
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
-import EmotionItem from "../components/EmotionItem";
 
 const Diary = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const diaryList = useContext(DiaryStateContext);
+  const { onRemove } = useContext(DiaryDispatchContext);
 
   const [data, setData] = useState();
+
+  const handleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onRemove(id);
+      navigate("/", { replace: true });
+    }
+  };
 
   useEffect(() => {
     if (diaryList.length >= 1) {
@@ -30,7 +39,11 @@ const Diary = () => {
   }, [id, diaryList]);
 
   if (!data) {
-    return <div className="DiaryPage">로딩중...</div>;
+    return (
+      <div className="DiaryPage">
+        <p className="loading">로딩중...</p>
+      </div>
+    );
   } else {
     const curEmotionData = emotionList.find(
       (it) => parseInt(data.emotion) === parseInt(it.emotion_id)
@@ -78,6 +91,14 @@ const Diary = () => {
             </div>
           </section>
         </article>
+
+        <div className="btn_wrapper">
+          <MyButton
+            text={"삭제하기"}
+            type={"negative"}
+            onClick={handleRemove}
+          ></MyButton>
+        </div>
       </div>
     );
   }

@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { DiaryStateContext } from "../App";
 import MyButton from "../components/MyButton";
 import MyHeader from "./../components/MyHeader";
-
 import DiaryList from "../components/DiaryList";
 
 const Home = () => {

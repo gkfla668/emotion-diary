@@ -78,6 +78,7 @@ const DiaryList = ({ diaryList }) => {
             optionList={filterOptionList}
           ></ControlMenu>
         </div>
+        
         <div className="right_col">
           <MyButton
             text={"새 일기쓰기"}

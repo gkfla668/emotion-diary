@@ -1,14 +1,13 @@
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import DiaryEditor from "../components/DiaryEditor";
 import { DiaryStateContext } from "./../App";
 
 const Edit = () => {
-  const [originData, setOriginData] = useState();
   const { id } = useParams();
-  const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
+  const [originData, setOriginData] = useState();
+  const diaryList = useContext(DiaryStateContext);
 
   useEffect(() => {
     if (diaryList.length >= 1) {

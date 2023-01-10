@@ -7,13 +7,11 @@ import MyHeader from "./MyHeader";
 
 import { DiaryDispatchContext } from "./../App";
 import { getStringDate } from "./../util/date";
-
 import { emotionList } from "./../util/emotion";
 
 const DiaryEditor = ({ isEdit, originData }) => {
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
-
   const navigate = useNavigate();
+  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
   const [date, setDate] = useState(getStringDate(new Date()));
   const [emotion, setEmotion] = useState(3);
   const [content, setContent] = useState("");
@@ -60,6 +58,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
         }
         head_text={isEdit ? "일기 수정하기" : "새 일기쓰기"}
       ></MyHeader>
+
       <div>
         <section>
           <h4>오늘은 언제인가요?</h4>
@@ -72,6 +71,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
             ></input>
           </div>
         </section>
+
         <section>
           <h4>오늘의 감정은?</h4>
           <div className="input_box emotion_list_wrapper">
@@ -85,6 +85,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
             ))}
           </div>
         </section>
+
         <section>
           <h4>오늘의 일기</h4>
           <div className="input_box text_wrapper">
@@ -96,6 +97,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
             ></textarea>
           </div>
         </section>
+        
         <section>
           <div className="control_box">
             <MyButton
