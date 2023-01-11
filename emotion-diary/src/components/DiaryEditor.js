@@ -18,10 +18,6 @@ const DiaryEditor = ({ isEdit, originData }) => {
 
   const contentRef = useRef();
 
-  const handleClickEmotion = (emotion) => {
-    setEmotion(emotion);
-  };
-
   const handleRemove = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       onRemove(originData.id);
@@ -95,7 +91,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
               <EmotionItem
                 key={it.emotion_id}
                 {...it}
-                onClick={handleClickEmotion}
+                onClick={setEmotion}
                 isSelected={it.emotion_id === emotion}
               ></EmotionItem>
             ))}
