@@ -16,6 +16,12 @@ const Diary = () => {
 
   const [data, setData] = useState();
 
+  // 상세 페이지가 처음 렌더됐을 때
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기 상세`
+  }, []);
+
   useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find(
