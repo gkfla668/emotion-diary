@@ -357,8 +357,3 @@ header button {
   font-weight: 400;
   line-height: 2.5;
 }
-
-.DiaryPage .btn_wrapper {
-  display: flex;
-  justify-content: flex-end;
-}

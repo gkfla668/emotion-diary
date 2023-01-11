@@ -13,16 +13,8 @@ const Diary = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const diaryList = useContext(DiaryStateContext);
-  const { onRemove } = useContext(DiaryDispatchContext);
 
   const [data, setData] = useState();
-
-  const handleRemove = () => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
-      onRemove(id);
-      navigate("/", { replace: true });
-    }
-  };
 
   useEffect(() => {
     if (diaryList.length >= 1) {
@@ -91,14 +83,6 @@ const Diary = () => {
             </div>
           </section>
         </article>
-
-        <div className="btn_wrapper">
-          <MyButton
-            text={"삭제하기"}
-            type={"negative"}
-            onClick={handleRemove}
-          ></MyButton>
-        </div>
       </div>
     );
   }
