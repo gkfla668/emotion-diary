@@ -1,6 +1,33 @@
 # 📝 emotion-diary 감정 일기장
 `react-router를 통한 React Single-Page-Application`
 
+**Router.js**
+```
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./../pages/Home";
+import New from "./../pages/New";
+import Edit from "./../pages/Edit";
+import Diary from "./../pages/Diary";
+
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/new" element={<New></New>}></Route>
+          <Route path="/edit/:id" element={<Edit></Edit>}></Route>
+          <Route path="/diary/:id" element={<Diary></Diary>}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+};
+
+export default Router;
+```
+
 <br/>
 
 ### ☺️ 오늘의 감정과 함께 하루 일기를 작성해보자 ☺️
